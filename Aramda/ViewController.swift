@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             let exhibitors = try decoder.decode([Exhibitor].self, from: data)
             print(exhibitors)
         } catch {
-            
+            print("Something went wrong lol")
         }
     }
     
