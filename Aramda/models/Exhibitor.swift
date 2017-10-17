@@ -9,5 +9,5 @@
 import Foundation
 
 struct Exhibitor: Codable {
-    let name: String
+    let company: String
 }

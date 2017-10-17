@@ -55,32 +55,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func get(_ sender: UIButton) {
-        get(endpoint: "exhibitors")
-    }
-    
-    func decode(data: Data) {
-        do {
-            let decoder = JSONDecoder()
-            let exhibitors = try decoder.decode([Exhibitor].self, from: data)
-            print(exhibitors)
-        } catch {
-            print("Something went wrong lol")
-        }
-    }
-    
-    func get(endpoint: String) {
-        let baseUrl = "https://ais.armada.nu/api/"
-        let url = URL(string: "\(baseUrl)\(endpoint)/")!
-        let request = URLRequest(url: url)
-        let session = URLSession.shared
-        
-        
-        session.dataTask(with: request) { [weak self] data, response, err in
-            if let data = data {
-                print("Entered the completionHandler")
-                self?.decode(data: data)
-            }
-            }.resume()
+        Http.get(endpoint: "exhibitors", type: [Exhibitor].self)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
