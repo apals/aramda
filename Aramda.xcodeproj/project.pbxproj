@@ -19,6 +19,9 @@
 		24A573B71F967D3300CAD526 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A573B41F967D3300CAD526 /* RxSwift.framework */; };
 		24A573B81F967D3300CAD526 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A573B41F967D3300CAD526 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A573BC1F967D6300CAD526 /* Exhibitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A573BB1F967D6300CAD526 /* Exhibitor.swift */; };
+		24A573C01F968C7900CAD526 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A573BF1F968C7900CAD526 /* Event.swift */; };
+		24A573C21F968EA000CAD526 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A573C11F968EA000CAD526 /* News.swift */; };
+		24A573C51F968F8C00CAD526 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A573C41F968F8C00CAD526 /* Api.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +52,9 @@
 		24A573B31F967D3200CAD526 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		24A573B41F967D3300CAD526 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		24A573BB1F967D6300CAD526 /* Exhibitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exhibitor.swift; sourceTree = "<group>"; };
+		24A573BF1F968C7900CAD526 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		24A573C11F968EA000CAD526 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		24A573C41F968F8C00CAD526 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 		24A5739B1F967A4500CAD526 /* Aramda */ = {
 			isa = PBXGroup;
 			children = (
+				24A573C31F968F7E00CAD526 /* api */,
 				24A573BA1F967D5500CAD526 /* models */,
 				24A5739C1F967A4500CAD526 /* AppDelegate.swift */,
 				24A5739E1F967A4500CAD526 /* ViewController.swift */,
@@ -93,7 +100,6 @@
 				24A573A81F967A4500CAD526 /* LaunchScreen.storyboard */,
 				24A573AB1F967A4500CAD526 /* Info.plist */,
 				24A573A31F967A4500CAD526 /* Aramda.xcdatamodeld */,
-				24A573B11F967D0B00CAD526 /* Http.swift */,
 			);
 			path = Aramda;
 			sourceTree = "<group>";
@@ -102,8 +108,19 @@
 			isa = PBXGroup;
 			children = (
 				24A573BB1F967D6300CAD526 /* Exhibitor.swift */,
+				24A573BF1F968C7900CAD526 /* Event.swift */,
+				24A573C11F968EA000CAD526 /* News.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		24A573C31F968F7E00CAD526 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				24A573B11F967D0B00CAD526 /* Http.swift */,
+				24A573C41F968F8C00CAD526 /* Api.swift */,
+			);
+			path = api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +200,9 @@
 				24A573B21F967D0B00CAD526 /* Http.swift in Sources */,
 				24A573A51F967A4500CAD526 /* Aramda.xcdatamodeld in Sources */,
 				24A5739D1F967A4500CAD526 /* AppDelegate.swift in Sources */,
+				24A573C21F968EA000CAD526 /* News.swift in Sources */,
+				24A573C01F968C7900CAD526 /* Event.swift in Sources */,
+				24A573C51F968F8C00CAD526 /* Api.swift in Sources */,
 				24A573BC1F967D6300CAD526 /* Exhibitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
