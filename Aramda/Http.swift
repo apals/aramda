@@ -16,8 +16,14 @@ class Http {
         case Left(A)
         case Right(B)
     }
+    
+    public enum Endpoint: String {
+        case exhibitors = "exhibitors"
+        case events = "events"
+        case news = "news"
+    }
 
-    static func get<T: Codable>(endpoint: String, type: T.Type) -> Observable<T> {
+    static func get<T: Codable>(endpoint: Endpoint, type: T.Type) -> Observable<T> {
         let baseUrl = "https://ais.armada.nu/api/"
         let url = URL(string: "\(baseUrl)\(endpoint)/")!
         let request = URLRequest(url: url)

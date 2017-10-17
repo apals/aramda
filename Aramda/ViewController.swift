@@ -16,35 +16,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     let defaultState: State = State()
-    let disposables = DisposeBag()
+    let disposeBag = DisposeBag()
     
     struct State {
         var count: Int = 0
     }
     
     enum Action {
-        case INCREMENT
-        case DECREMENT
-        case COLOR(color: UIColor)
+        case increment
+        case decrement
+        case color(color: UIColor)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let incrementStream = plusButton.rx.tap.map { Action.INCREMENT }
-        let decrementStream = minusButton.rx.tap.map { Action.DECREMENT }
+        let incrementStream = plusButton.rx.tap.map { Action.increment }
+        let decrementStream = minusButton.rx.tap.map { Action.decrement }
         
         Observable.merge(incrementStream, decrementStream)
-            .startWith(Action.INCREMENT)
+            .startWith(Action.increment)
             .scan(defaultState, accumulator: reduce)
             .subscribe(onNext: render)
-            .addDisposableTo(disposables)
+            .addDisposableTo(disposeBag)
     }
     
     func reduce(state: State = State(), action: Action) -> State {
         var state = state
         switch action {
-        case .INCREMENT: state.count += 1
+        case .increment: state.count += 1
         default: state.count -= 1
         }
         return state
@@ -55,9 +55,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func get(_ sender: UIButton) {
-        Http.get(endpoint: "exhibitors", type: [Exhibitor].self)
+        Http.get(endpoint: .exhibitors, type: [Exhibitor].self)
             .subscribe { print($0) }
-            .addDisposableTo(disposables)
+            .addDisposableTo(disposeBag)
     }
     
 }
