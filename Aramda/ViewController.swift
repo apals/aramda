@@ -12,7 +12,6 @@ import RxSwift
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
