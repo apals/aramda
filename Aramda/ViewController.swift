@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     let defaultState: State = State()
-    var sub: Disposable?
+    let disposables = DisposeBag()
     
     struct State {
         var count: Int = 0
@@ -34,10 +34,11 @@ class ViewController: UIViewController {
         let incrementStream = plusButton.rx.tap.map { Action.INCREMENT }
         let decrementStream = minusButton.rx.tap.map { Action.DECREMENT }
         
-        sub = Observable.merge(incrementStream, decrementStream)
+        Observable.merge(incrementStream, decrementStream)
             .startWith(Action.INCREMENT)
             .scan(defaultState, accumulator: reduce)
             .subscribe(onNext: render)
+            .addDisposableTo(disposables)
     }
     
     func reduce(state: State = State(), action: Action) -> State {
@@ -55,10 +56,8 @@ class ViewController: UIViewController {
     
     @IBAction func get(_ sender: UIButton) {
         Http.get(endpoint: "exhibitors", type: [Exhibitor].self)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        sub?.dispose()
+            .subscribe { print($0) }
+            .addDisposableTo(disposables)
     }
     
 }
