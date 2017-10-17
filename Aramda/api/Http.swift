@@ -12,15 +12,15 @@ import RxSwift
 
 class Http {
 
-    enum Either<A,B> {
-        case Left(A)
-        case Right(B)
-    }
-    
     public enum Endpoint: String {
         case exhibitors = "exhibitors"
         case events = "events"
         case news = "news"
+    }
+
+    private enum Either<A,B> {
+        case Left(A)
+        case Right(B)
     }
 
     static func get<T: Codable>(endpoint: Endpoint, type: T.Type) -> Observable<T> {

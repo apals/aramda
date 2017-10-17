@@ -55,7 +55,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func get(_ sender: UIButton) {
-        Http.get(endpoint: .exhibitors, type: [Exhibitor].self)
+        Api.fetchExhibitors()
+            .subscribe { print($0) }
+            .addDisposableTo(disposeBag)
+        Api.fetchEvents()
+            .subscribe { print($0) }
+            .addDisposableTo(disposeBag)
+        Api.fetchNews()
             .subscribe { print($0) }
             .addDisposableTo(disposeBag)
     }
